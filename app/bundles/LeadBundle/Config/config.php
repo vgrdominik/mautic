@@ -739,6 +739,12 @@ return [
                 ],
                 'alias'     => 'leadfields_choices',
             ],
+            'mautic.form.type.lead_columns' => [
+                'class'     => \Mautic\LeadBundle\Form\Type\ContactColumnsType::class,
+                'arguments' => [
+                    'mautic.lead.columns.dictionary',
+                ],
+            ],
             'mautic.form.type.lead_dashboard_leads_in_time_widget' => [
                 'class' => 'Mautic\LeadBundle\Form\Type\DashboardLeadsInTimeWidgetType',
                 'alias' => 'lead_dashboard_leads_in_time_widget',
@@ -888,6 +894,14 @@ return [
                     'mautic.campaign.model.campaign',
                     'mautic.helper.cache_storage',
                     '@doctrine.orm.entity_manager',
+                ],
+            ],
+            'mautic.lead.columns.dictionary' => [
+                'class'     => \Mautic\LeadBundle\Services\ContactColumnsDictionary::class,
+                'arguments' => [
+                    'mautic.lead.model.field',
+                    'translator',
+                    'mautic.helper.core_parameters',
                 ],
             ],
         ],
